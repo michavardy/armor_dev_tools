@@ -5,7 +5,7 @@
 - constructor UI
 - api backend
 - mongo db
-- mysql *on secure network
+- mysql on secure network
 
 ### Steps
 1. test that the containers can communicate
