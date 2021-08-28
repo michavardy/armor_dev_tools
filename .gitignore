@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+constructor_ui/node_modules
+constructor_ui/.pnp
+constructor_ui/.pnp.js
+
+# testing
+constructor_ui/coverage
+
+# production
+constructor_ui/build
+
+# misc
+constructor_ui/.DS_Store
+constructor_ui/.env.local
+constructor_ui/.env.development.local
+constructor_ui/.env.test.local
+constructor_ui/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
