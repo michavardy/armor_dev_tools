@@ -5,8 +5,8 @@ services:
     container_name: ui
     build: ./constructor_ui
     volumes:
-      - '.:/app'
-      - '/app/node_modules'
+      - 'constructor:/app'
+      - 'node_modules:/app/node_modules'
     ports:
       - 3001:3000
     environment:
@@ -25,6 +25,10 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - ./mongo-volume:/data/db
+      - mongo-volume:/data/db
     ports:
       - '27017-27019:27017-27019'
+volumes:
+  constructor:
+  node_modules:
+  mongo-volume:
