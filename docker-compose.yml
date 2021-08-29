@@ -11,12 +11,26 @@ services:
       - 3001:3000
     environment:
       - CHOKIDAR_USEPOLLING=true
+  component_test:
+    container_name: component_test
+    build: ./constructor_ui
+    volumes:
+      - 'component_test:/app'
+      - 'node_modules:/app/node_modules'
+    ports:
+      - 3002:3002
+    environment:
+      - CHOKIDAR_USEPOLLING=true
   api:
     container_name: api
     build: ./api
     ports:
       - 80:80
-
+  py_dev:
+    container_name: pydev
+    build: ./dev_env
+    volumes:
+      - 'py_dev:/pydev'
   database-new:
     image: mongo:4.0.5
     container_name: database
@@ -32,3 +46,5 @@ volumes:
   constructor:
   node_modules:
   mongo-volume:
+  component_test:
+  py_dev:
