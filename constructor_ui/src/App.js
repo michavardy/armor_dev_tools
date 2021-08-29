@@ -1,6 +1,6 @@
 import React from 'react';
 import { Counter } from './features/counter/Counter';
-impoort {ConstructorTemplate} from './features/template/ConstructorTemplate';
+import ConstructorTemplate from './features/template/ConstructorTemplate';
 
 
 function App() {
