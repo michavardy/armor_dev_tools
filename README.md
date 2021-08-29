@@ -17,6 +17,7 @@
 - localhost:3001 - react redux app
 - localhost:3002 - component check
 - localhost:80 - api
+- docker run -it armor_dev_tools_development /bin/bash (to run the dev container)
 # run development envirnment
 docker run  -it -v dev_env:/dev_env armor_dev_tools_development
 
