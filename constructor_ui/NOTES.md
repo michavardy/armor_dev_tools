@@ -1,5 +1,8 @@
-# functional components
+# CSS
+
+# react functional components
 ```
+
 const <function name> = () => {
     return (
         <h1>hello world constructor</h1>

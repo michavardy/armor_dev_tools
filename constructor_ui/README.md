@@ -3,10 +3,7 @@ docker build -t constructor:dev .
 
 ## run dockers container
 docker run -it --rm -v ${PWD}:/app  -v /app/node_modules -p 3001:3000 -e CHOKIDAR_USEPOLLING=true constructor:dev
-docker run -it --rm -v ./app:/usr/src/app/app  -v /app/node_modules -p 3001:3000 -e CHOKIDAR_USEPOLLING=true constructor:dev
-
-
-docker run -it --mount "type=bind,source=$(pwd)/source_dir,target=/app/target_dir" -p 3001:3000 -e CHOKIDAR_USEPOLLING=true constructor:dev
+docker run -it --rm -v ${PWD}/app:/usr/src/app/app  -v /app/node_modules -p 3001:3000 -e CHOKIDAR_USEPOLLING=true constructor:dev
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
