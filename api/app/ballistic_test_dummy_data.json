@@ -9,8 +9,7 @@
         "width_mm": 100,
         "thickness_mm": 10,
         "areal_weight_kg/m2": 100,
-        "test_panel_description": "10 mm M2-1",
-        "additional_information": ""
+        "test_panel_description": "10 mm M2-1"
     },
     "ballistic_threat": {
         "no": 1,
@@ -22,8 +21,7 @@
         "max_dist_between_shots": 500,
         "min_dist_between_shots": 50,
         "min_dist_from_edge": 100,
-        "barrel": false,
-        "remarks": ""
+        "barrel": false
     },
     "shot_data": [
         {

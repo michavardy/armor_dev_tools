@@ -1,28 +1,58 @@
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import create_model
+import os
 import json
 
+# if running on wsl
+if os.path.exists('/mnt/c/Users/micha/Desktop/armor_dev_tools/api/app/ballistic_test_dummy_data.json'):
+    with open('/mnt/c/Users/micha/Desktop/armor_dev_tools/api/app/ballistic_test_dummy_data.json','r') as d:
+        dummy = json.load(d)
+else:
+    dummy=False
+
 app = FastAPI()
-with open("./ballistic_test_dummy_data.json")
-class Ballistic_Test(BaseModel):
-    name: str
-    price: float
-    is_offer: Optional[bool] = None
 
-@app.get("/")
-def read_root():
-    return {"Hello": "my_world"}
+origins = [
+    "http://127.0.0.1:8000",
+    "localhost:8000"
+]
 
-@app.get("/testthis")
-def read_root():
-    return {"test_key": "test_value"}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+def dict_model(name:str,dict_def:dict):
+    """
+        currently this function only supports nested dicts and lists of dicts, (i think)
+        given model m1 >> pydantic.main.model
+        you can instantiate a new model using m1() or m1(**new_dict)
+    """
+    fields = {}
+    for field_name,value in dict_def.items():
+        if isinstance(value,(int,bool,str,float,tuple)):
+            fields[field_name]=value
+        elif isinstance(value,list):
+            list_model_schema = dict_model(f'{name}_{field_name}',value[0])
+            fields[field_name] = [list_model_schema(**i) for i in value]
+        elif isinstance(value,dict):
+            fields[field_name]=(dict_model(f'{name}_{field_name}',value)())
+        else:
+            raise ValueError(f"Field {field_name}:{value} has invalid syntax")
+    return create_model(name,**fields)
+
+model_from_json = dict_model('dummy_model',dummy)()
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
 
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
-    return {"item_name": item.name, "item_id": item_id}
+@app.get("/dummy", tags=["dd"])
+async def get_dummy() -> dict:
+    return { "dummy_data": dummy  }
+
+
