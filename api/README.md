@@ -1,4 +1,5 @@
 # build locally 
+## go to local folder
 python3 -m uvicorn main:app --reload
 gunicorn <app_name>:app -w 4 -k uvicorn.workers.UvicornWorker
 # to build image 
