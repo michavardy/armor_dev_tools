@@ -1,11 +1,11 @@
 from typing import Optional
-
 from fastapi import FastAPI
 from pydantic import BaseModel
+import json
 
 app = FastAPI()
-
-class Item(BaseModel):
+with open("./ballistic_test_dummy_data.json")
+class Ballistic_Test(BaseModel):
     name: str
     price: float
     is_offer: Optional[bool] = None
