@@ -10,6 +10,9 @@ import json
 if os.path.exists('/mnt/c/Users/micha/Desktop/armor_dev_tools/api/app/ballistic_test_dummy_data.json'):
     with open('/mnt/c/Users/micha/Desktop/armor_dev_tools/api/app/ballistic_test_dummy_data.json','r') as d:
         dummy = json.load(d)
+if os.path.exists('/app/ballistic_test_dummy_data.json'):
+    with open('/app/ballistic_test_dummy_data.json','r') as d:
+        dummy = json.load(d)
 else:
     dummy=False
 
@@ -20,13 +23,7 @@ origins = [
     "localhost:8000"
 ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
+#app.add_middleware(CORSMiddleware, allow_origins=origins,allow_credentials=True,allow_methods=["*"], allow_headers=["*"])
 
 def dict_model(name:str,dict_def:dict):
     """
@@ -47,12 +44,14 @@ def dict_model(name:str,dict_def:dict):
             raise ValueError(f"Field {field_name}:{value} has invalid syntax")
     return create_model(name,**fields)
 
-model_from_json = dict_model('dummy_model',dummy)()
+#model_from_json = dict_model('dummy_model',dummy)()
 
+@app.get("/")
+def read_root():
+    return ({"Hello": "my_world"})
 
-
-@app.get("/dummy", tags=["dd"])
-async def get_dummy() -> dict:
-    return { "dummy_data": dummy  }
+@app.get("/dummy")
+def get_dummy():
+    return (dummy)
 
 
