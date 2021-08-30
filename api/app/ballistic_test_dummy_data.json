@@ -1,0 +1,82 @@
+{
+    "report_number": 90001,
+    "inspector": "micha",
+    "project_number": 90001,
+    "test_date": "8.30.21",
+    "test_panel_details": {
+        "weight_kg": 15.12,
+        "height_mm": 100,
+        "width_mm": 100,
+        "thickness_mm": 10,
+        "areal_weight_kg/m2": 100,
+        "test_panel_description": "10 mm M2-1",
+        "additional_information": ""
+    },
+    "ballistic_threat": {
+        "no": 1,
+        "projectile": "a1",
+        "specification": "sow",
+        "requered_V50": false,
+        "required_range": false,
+        "angle": 0,
+        "max_dist_between_shots": 500,
+        "min_dist_between_shots": 50,
+        "min_dist_from_edge": 100,
+        "barrel": false,
+        "remarks": ""
+    },
+    "shot_data": [
+        {
+            "no": 1,
+            "bullet_type": "a1",
+            "head_stamp": "na",
+            "weight": {
+                "gram": 1,
+                "grain": 50
+            },
+            "yaw": "<20",
+            "angle": 0,
+            "velocity": 203,
+            "result": "stop"
+        },
+        {
+            "no": 2,
+            "bullet_type": "a1",
+            "head_stamp": "na",
+            "weight": {
+                "gram": 1,
+                "grain": 50
+            },
+            "yaw": "<20",
+            "angle": 0,
+            "velocity": 203,
+            "result": "stop"
+        },
+        {
+            "no": 3,
+            "bullet_type": "a1",
+            "head_stamp": "na",
+            "weight": {
+                "gram": 1,
+                "grain": 50
+            },
+            "yaw": "<20",
+            "angle": 0,
+            "velocity": 203,
+            "result": "stop"
+        },
+        {
+            "no": 4,
+            "bullet_type": "a1",
+            "head_stamp": "na",
+            "weight": {
+                "gram": 1,
+                "grain": 50
+            },
+            "yaw": "<20",
+            "angle": 0,
+            "velocity": 203,
+            "result": "stop"
+        }
+    ]
+}
