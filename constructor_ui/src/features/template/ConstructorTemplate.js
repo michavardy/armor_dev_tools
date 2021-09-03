@@ -11,6 +11,10 @@ import Statistics from './icons/statistics.svg' ;
 import HSP from './icons/HSP.svg' ;
 import { useDispatch } from 'react-redux';
 import {fetchDummy} from '../dummy/getDummySlice';
+import DisplayDummy from '../dummy/DisplayDummy'
+import {store} from '../../app/store';
+import React, {useState} from 'react';
+import { useSelector} from "react-redux";
 
 
 
@@ -26,21 +30,34 @@ const ConstructorTemplate = () => {
     const stat_icon = <img src={Statistics} alt="target recomendation" width="100"/>
     const HSP_icon = <img src={HSP} alt="HSP data" width="100"/>
     const dispatch = useDispatch();
+    const getDummy = ()=>{dispatch(fetchDummy())}
+    const hasDummy = useSelector((state)=>state.dummySlice.HasDummy)
+    const dummy = useSelector((state)=>state.dummySlice.dummy)
+
+    
     return (
         <div className="AppBody">
             <div className="TopBar"><h1> armor development</h1></div>
             <div className="ContentContainer">
                 <div className="SideBar">
                     <button onClick={()=>{dispatch(fetchDummy())}}>
-                        test
+                        <div className="icon_body"> 
+                            <div className="icon_symbol">{bullet_icon}</div>
+                            <div className="icon_title"> ballistic test </div>
+                        </div>
                     </button>
-                    <Icon img={bullet_icon} title="ballistic test"/>
                     <Icon img={constructor_icon} title="constructor" />
                     <Icon img={measure_icon} title="damage" />
                     <Icon img={MH_icon} title="Multi-Hit" />
                     <Icon img={report_icon} title="report input" />
                 </div>
-                <div className="ContentBody"></div>
+                <div className="ContentBody">
+                    {
+                    hasDummy && <DisplayDummy dummy={dummy}/>
+                    
+                    }
+                    
+                </div>
             </div>
         </div>
     );

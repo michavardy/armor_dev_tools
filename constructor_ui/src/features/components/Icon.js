@@ -1,4 +1,6 @@
 import React from 'react';
+import DisplayDummy from '../dummy/DisplayDummy'
+
 import '../template/ConstructorTemplate.css';
 
 const Icon = (props) => {
