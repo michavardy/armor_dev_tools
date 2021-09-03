@@ -9,6 +9,11 @@ import MH from './icons/MH.svg' ;
 import Report from './icons/report.svg' ;
 import Statistics from './icons/statistics.svg' ;
 import HSP from './icons/HSP.svg' ;
+import { useDispatch } from 'react-redux';
+import {fetchDummy} from '../dummy/getDummySlice';
+
+
+
 
 const ConstructorTemplate = () => {
     const bullet_icon = <img src={Bullet} alt="bullet" width="100"/>
@@ -20,17 +25,20 @@ const ConstructorTemplate = () => {
     const report_icon = <img src={Report} alt="input_report_RK" width="100"/>
     const stat_icon = <img src={Statistics} alt="target recomendation" width="100"/>
     const HSP_icon = <img src={HSP} alt="HSP data" width="100"/>
-
+    const dispatch = useDispatch();
     return (
         <div className="AppBody">
             <div className="TopBar"><h1> armor development</h1></div>
             <div className="ContentContainer">
                 <div className="SideBar">
-                    <Icon img={bullet_icon} title="ballistic test" />
-                    <Icon img={constructor_icon} title="constructor"/>
-                    <Icon img={measure_icon} title="damage"/>
-                    <Icon img={MH_icon} title="Multi-Hit"/>
-                    <Icon img={report_icon} title="report input"/>
+                    <button onClick={()=>{dispatch(fetchDummy())}}>
+                        test
+                    </button>
+                    <Icon img={bullet_icon} title="ballistic test"/>
+                    <Icon img={constructor_icon} title="constructor" />
+                    <Icon img={measure_icon} title="damage" />
+                    <Icon img={MH_icon} title="Multi-Hit" />
+                    <Icon img={report_icon} title="report input" />
                 </div>
                 <div className="ContentBody"></div>
             </div>

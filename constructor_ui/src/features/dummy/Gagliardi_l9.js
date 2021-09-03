@@ -1,6 +1,6 @@
 import { configureStore,createSlice, getDefaultMiddleware, getAsyncThunk } from "@reduxjs/toolkit";
 
-const endpoint = "https://jsonplaceholder.typecode.com/users/"
+
 
 const getUsers = createAsyncThunk(
     "users/getUsers",
@@ -38,10 +38,21 @@ const userSlice = createSlice( {
     }
 })
 
+const userReducer=userSlice.reducer
+
+function loggerMiddleware(store){
+    return function (next){
+        return function (action){
+            console.log(action);
+            next(action)
+        }
+    }
+}
+
 const store = configureStore({
     reducer:{userReducer},
     middleware:[...getDefaultMiddleware(), loggerMiddleware]})
 
 const butten = document.getElementById("fetch");
 
-GamepadButton.addEventListener("click", {store.dispatch(getUsers());})
+Button.addEventListener("click", {store.dispatch(getUsers("https://jsonplaceholder.typecode.com/users/"));})
